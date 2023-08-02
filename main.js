@@ -8,8 +8,9 @@ let localtime = document.querySelector(".localtime");
 let tempC = document.querySelector(".temp-c");
 let tempF = document.querySelector(".temp-f");
 let loadingComp = document.querySelector(".loading");
+let body = document.querySelector("body");
 
-//submit phone
+//submit
 submitBtn.addEventListener("click", function () {
   weatherInformation = getData(insertedCity.value);
 });
@@ -31,6 +32,17 @@ async function getData(city) {
     tempC.textContent = `temperature in celsius: ${current.temp_c}`;
     tempF.textContent = `temperature in fahrenheit ${current.temp_f}`;
     loadingComp.textContent = "succeed";
+
+    // handle background images based on weather
+    if (Number(current.temp_c) <= -30 || Number(current.temp_c) <= 35) {
+      body.style.backgroundImage = "url('./images/cold.jpg')";
+      body.style.backgroundSize = "cover";
+      body.style.backgroundRepeat = "no repeat";
+    } else {
+      body.style.backgroundImage = "url('./images/sunny.jpg')";
+      body.style.backgroundSize = "cover";
+      body.style.backgroundRepeat = "no repeat";
+    }
   } catch (error) {
     console.log(error);
   }
