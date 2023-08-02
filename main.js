@@ -45,6 +45,7 @@ async function getData(city) {
     }
   } catch (error) {
     console.log(error);
+    loadingComp.textContent = "invalid city name";
   }
 }
 
