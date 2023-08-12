@@ -34,14 +34,16 @@ async function getData(city) {
     loadingComp.textContent = "succeed";
 
     // handle background images based on weather
-    if (Number(current.temp_c) <= -30 || Number(current.temp_c) <= 35) {
+    if (Number(current.temp_c) <= -30 || Number(current.temp_c) <= 30) {
       body.style.backgroundImage = "url('./images/cold.jpg')";
-      body.style.backgroundSize = "cover";
-      body.style.backgroundRepeat = "no repeat";
+      body.style.backgroundSize = "100% 100%"; // Adjusted background size property
+      body.style.backgroundRepeat = "no-repeat";
+      body.style.overflow = "hidden"; // Changed 'none' to 'hidden'
     } else {
       body.style.backgroundImage = "url('./images/sunny.jpg')";
-      body.style.backgroundSize = "cover";
-      body.style.backgroundRepeat = "no repeat";
+      body.style.backgroundSize = "100% 100%"; // Adjusted background size property
+      body.style.backgroundPosition = "center center";
+      body.style.backgroundRepeat = "no-repeat";
     }
   } catch (error) {
     console.log(error);
